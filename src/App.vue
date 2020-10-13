@@ -2,8 +2,7 @@
 <section>
     <header><h1>Friends List</h1></header>
     <ul>
-        <friend-contact name='Manuel Lorenz' phone-num='837 849 2922' email-address='manny@localhost.com' is-favorite='1'></friend-contact>
-        <friend-contact name='Jenny Lorenz' phone-num='837 849 2922' email-address='jenny@localhost.com' is-favorite='0'></friend-contact>
+        <friend-contact v-for="friend in friends" :key="friend.id" :name='friend.name' :phone-num='friend.phone' :email-address='friend.email' :is-favorite='true'></friend-contact>
     </ul>
 </section>
 </template>
@@ -20,7 +19,7 @@ export default {
                 },
                 {
                     id: 'jenny',
-                    name: 'jenny Smith',
+                    name: 'Jenny Smith',
                     phone: '393 029 8301',
                     email: 'jenny@gmail.com'
                 }
