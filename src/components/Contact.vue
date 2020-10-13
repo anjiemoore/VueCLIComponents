@@ -1,6 +1,6 @@
 <template>   
     <li>
-        <h2>{{ name }} {{ friendFav ? "(Fav)" : '' }}</h2> 
+        <h2>{{ name }} {{ isFavorite ? "(Fav)" : '' }}</h2> 
         <button @click="toggleFav">Change Favorite</button>
         <button @click="toggleDetails">{{ detailsVisible ? 'Hide' : 'Show' }} Details</button>
         <ul v-if="detailsVisible">
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+    //
     // props: [
     //     'name',
     //     'phoneNum',
@@ -19,6 +20,10 @@ export default {
     //     'isFavorite'
     // ],
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         name: {
             type: String,
             required: true
@@ -37,10 +42,13 @@ export default {
             default: false
         },
     },
+    // a way of writing emits: ['toggle-favorite'],
+    emits: {
+
+    },
     data() {
         return {
             detailsVisible: false,
-            friendFav: this.isFavorite,
         }
     },
     methods: {
@@ -48,7 +56,11 @@ export default {
             this.detailsVisible = !this.detailsVisible;
         },
         toggleFav() {
-            this.friendFav = !this.friendFav;
+            // this.friendFav = !this.friendFav;
+            
+            // allows you to emit event
+            // kebab case
+            this.$emit('toggle-favorite', this.id);
         }
     }
 }

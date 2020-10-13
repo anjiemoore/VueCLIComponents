@@ -2,7 +2,7 @@
 <section>
     <header><h1>Friends List</h1></header>
     <ul>
-        <friend-contact v-for="friend in friends" :key="friend.id" :name='friend.name' :phone-num='friend.phone' :email-address='friend.email' :is-favorite='true'></friend-contact>
+        <friend-contact v-for="friend in friends" :key="friend.id" :id='friend.id' :name='friend.name' :phone-num='friend.phone' :email-address='friend.email' :is-favorite='friend.isFavorite' @toggle-favorite='toggleFavoriteStatus'></friend-contact>
     </ul>
 </section>
 </template>
@@ -15,15 +15,23 @@ export default {
                     id: 'amy',
                     name: 'Amy Smith',
                     phone: '393 029 8301',
-                    email: 'amy@gmail.com'
+                    email: 'amy@gmail.com',
+                    isFavorite: true
                 },
                 {
                     id: 'jenny',
                     name: 'Jenny Smith',
                     phone: '393 029 8301',
-                    email: 'jenny@gmail.com'
+                    email: 'jenny@gmail.com',
+                    isFavorite: false
                 }
             ]
+        }
+    },
+    methods: {
+        toggleFavoriteStatus(friendId) {
+            const identifiedFriend = this.friends.find(friend => friend.id === friendId);
+            identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
         }
     }
 }
