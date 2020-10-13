@@ -7,6 +7,7 @@
             <li><strong>Phone:</strong> {{ phoneNum }}</li>
             <li><strong>Email:</strong> {{ emailAddress }}</li>
         </ul>
+        <button @click="$emit('delete', id)">Delete</button>
     </li>
 </template>
 
@@ -69,7 +70,7 @@ export default {
             // allows you to emit event
             // kebab case
             this.$emit('toggle-favorite', this.id);
-        }
+        },
     }
 }
 </script>
