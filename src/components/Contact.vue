@@ -42,10 +42,18 @@ export default {
             default: false
         },
     },
-    // a way of writing emits: ['toggle-favorite'],
-    emits: {
-
-    },
+    emits: ['toggle-favorite'],
+    // {
+    //     'toggle-favorite': function(id) {
+    //         // validation
+    //         if (id) {
+    //             return true;
+    //         } else {
+    //             console.warn("ID is missing")
+    //             return false;
+    //         }
+    //     }
+    // },
     data() {
         return {
             detailsVisible: false,

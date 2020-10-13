@@ -1,6 +1,7 @@
 <template>
 <section>
     <header><h1>Friends List</h1></header>
+    <new-contact></new-contact>
     <ul>
         <friend-contact v-for="friend in friends" :key="friend.id" :id='friend.id' :name='friend.name' :phone-num='friend.phone' :email-address='friend.email' :is-favorite='friend.isFavorite' @toggle-favorite='toggleFavoriteStatus'></friend-contact>
     </ul>
